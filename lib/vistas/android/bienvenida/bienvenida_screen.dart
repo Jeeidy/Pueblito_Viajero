@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:pueblito_viajero/provider/screen_iniciar_sesion_provider.dart';
+import 'package:pueblito_viajero/vistas/android/home/home_screen.dart';
 import 'package:pueblito_viajero/vistas/web/panel_screen/panel_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../utils/custom/custom_colors.dart';
-import '../home/home_screen.dart';
 
 class BienvenidaPage extends StatefulWidget {
   const BienvenidaPage({super.key});
@@ -39,7 +39,7 @@ class _BienvenidaPageState extends State<BienvenidaPage> {
 
     Timer(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => kIsWeb ? const PanelScreen() : const HomePage()),
+        MaterialPageRoute(builder: (context) => kIsWeb ? const PantallaWebPanel() : const PantallaHome()),
       );
     });
   }

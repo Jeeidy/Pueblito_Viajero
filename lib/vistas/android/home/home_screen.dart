@@ -10,17 +10,18 @@ import '../../../utils/custom/custom_colors.dart';
 import 'fragmentos/home.dart';
 import 'fragmentos/perfil.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class PantallaHome extends StatefulWidget {
+  const PantallaHome({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _PantallaHomeState createState() => _PantallaHomeState();
 }
 
-class _HomePageState extends State<HomePage> {
-  final PageController _pageController = PageController();
+class _PantallaHomeState extends State<PantallaHome> {
   int _currentPage = 0;
   late Timer _timer;
+
+  final PageController _pageController = PageController();
 
   List fragmentos = [
     const HomeFragmento(), const EventosFragmento(), const MiradoresFragmento(tipo: ''), const FavoritosFragmento(), const PerfilFragmento()
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
     
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.blanco,
         body: Column(
           children: [
             const Expanded(

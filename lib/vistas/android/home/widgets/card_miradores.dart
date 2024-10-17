@@ -101,7 +101,6 @@ class InteractiveStars extends StatefulWidget {
   final String miradorId;
 
   const InteractiveStars({required this.miradorId, super.key});
-
   @override
   _InteractiveStarsState createState() => _InteractiveStarsState();
 }
@@ -154,7 +153,6 @@ class InteractiveFavorite extends StatefulWidget {
   final List<String> favoritos;
 
   const InteractiveFavorite({required this.miradorId, required this.favoritos, super.key});
-
   @override
   _InteractiveFavoriteState createState() => _InteractiveFavoriteState();
 }
@@ -195,4 +193,3 @@ class _InteractiveFavoriteState extends State<InteractiveFavorite> {
     );
   }
 }
-

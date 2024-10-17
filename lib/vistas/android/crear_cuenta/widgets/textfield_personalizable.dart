@@ -54,10 +54,11 @@ class TextFieldPersonalizable extends StatelessWidget {
             focusNode: focusNode,
             obscureText: keyboard == 'password' ? true : false,
             controller: controller,
-            keyboardType: keyboard == 'email' ? TextInputType.emailAddress :
-                          keyboard == 'password' ? TextInputType.emailAddress :
-                          keyboard == 'num' ? TextInputType.number:
-                          TextInputType.text,
+            keyboardType:
+            keyboard == 'email'
+            ? TextInputType.emailAddress : keyboard == 'password'
+            ? TextInputType.emailAddress : keyboard == 'num'
+            ? TextInputType.number : TextInputType.text,
             style: const TextStyle(color: Colors.black87),
             decoration: InputDecoration(
               border: InputBorder.none,

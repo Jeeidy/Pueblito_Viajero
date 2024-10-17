@@ -15,6 +15,7 @@ class PanelCentralFragmento extends StatelessWidget {
   Widget build(BuildContext context) {
     final miradorProvider = Provider.of<PanelMiradorProvider>(context);
     final sesionProvider = Provider.of<IniciarSesionProvider>(context);
+
     final name = miradorProvider.mirador.name;
     final name_2 = sesionProvider.mirador.name;
     final image = miradorProvider.imagenUrl;
@@ -32,53 +33,53 @@ class PanelCentralFragmento extends StatelessWidget {
             ),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                color: AppColors.gris,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Center(
                 child: Row(
                   children: [
                     Expanded(
-                        flex: 1,
-                        child: Center(
-                          child: (image == null || image.isEmpty) && (image_2 == null || image_2.isEmpty)
-                          ? const Icon(Icons.account_balance_rounded, color: AppColors.azulClaro, size: 120)
-                          : Container(
-                            width: 110,
-                            height: 110,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: AppColors.azulClaro,
-                                width: 4.0,
-                              ),
-                            ),
-                            child: ClipOval(
-                              child: Image.network(
-                                image == '' ? image_2 :
-                                image_2 == '' ? image : null,
-                                fit: BoxFit.cover
-                              ),
+                      flex: 1,
+                      child: Center(
+                        child: (image == null || image.isEmpty) && (image_2 == null || image_2.isEmpty)
+                        ? const Icon(Icons.account_balance_rounded, color: AppColors.azulClaro, size: 120)
+                        : Container(
+                          width: 110,
+                          height: 110,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: AppColors.azulClaro,
+                              width: 4.0,
                             ),
                           ),
-                        )
+                          child: ClipOval(
+                            child: Image.network(
+                              image == '' ? image_2 :
+                              image_2 == '' ? image : null,
+                              fit: BoxFit.cover
+                            ),
+                          ),
+                        ),
+                      )
                     ),
                     Expanded(
-                        flex: 4,
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            name == '' && name_2 == ''
-                            ? 'NOMBRE DE MIRADOR'
-                            : name == '' ? name_2.toUpperCase()
-                            : name_2 == '' ? name.toUpperCase()
-                            : '',
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                            ),
+                      flex: 4,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          name == '' && name_2 == ''
+                          ? 'NOMBRE DE MIRADOR'
+                          : name == '' ? name_2.toUpperCase()
+                          : name_2 == '' ? name.toUpperCase()
+                          : '',
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
                           ),
-                        )
+                        ),
+                      )
                     )
                   ],
                 ),

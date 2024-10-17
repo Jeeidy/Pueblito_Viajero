@@ -4,11 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:pueblito_viajero/provider/screen_iniciar_sesion_provider.dart';
 import 'package:pueblito_viajero/utils/custom/custom_colors.dart';
 import 'package:pueblito_viajero/vistas/web/panel_screen/widgets/textfield_mirador.dart';
-import 'package:pueblito_viajero/vistas/web/sesion_registro/fragmentos/inicio_sesion_fragmento.dart';
 import 'package:pueblito_viajero/vistas/widgets/boton_personalizable.dart';
-
 import '../../../../../provider/panel_perfil_provider.dart';
-import '../../../../android/crear_cuenta/widgets/textfield_personalizable.dart';
 
 class FormularioPerfil extends StatelessWidget {
   const FormularioPerfil({super.key});
@@ -17,7 +14,6 @@ class FormularioPerfil extends StatelessWidget {
   Widget build(BuildContext context) {
     final perfilProvider = Provider.of<PerfilProvider>(context);
     final sesionProvider = Provider.of<IniciarSesionProvider>(context);
-    var height = MediaQuery.of(context).size.height;
 
     Widget buildSectionTitle(String title) {
       return Text(
@@ -44,10 +40,9 @@ class FormularioPerfil extends StatelessWidget {
       );
     }
 
-
     return Card(
       elevation: 3,
-      color: Colors.grey[300],
+      color: AppColors.gris,
       child: perfilProvider.selectedOption >= 1 && perfilProvider.selectedOption <= 5
       ? Padding(
         padding: const EdgeInsets.all(15),

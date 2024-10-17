@@ -46,6 +46,7 @@ class IniciarSesionProvider with ChangeNotifier {
                           name: '',
                           description: '',
                           address: '',
+                          image: '',
                           phone: '',
                           email: '',
                           instagram: '',
@@ -151,7 +152,7 @@ class IniciarSesionProvider with ChangeNotifier {
     homeProvider.resetVariables();
 
     Navigator.of(context).pushAndRemoveUntil(
-      MaterialPageRoute(builder: (context) => kIsWeb ? const WebSesionRegistroScreen() :const PantallaInicio()),
+      MaterialPageRoute(builder: (context) => kIsWeb ? const PantallaWebSesionRegistro() :const PantallaInicio()),
           (Route<dynamic> route) => false,
     );
   }

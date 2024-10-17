@@ -117,9 +117,9 @@ class AplicacionInicial extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
-              child: CircularProgressIndicator(
-                  color: kIsWeb ? AppColors.azulClaro : AppColors.verdeDivertido
-              )
+            child: CircularProgressIndicator(
+                color: kIsWeb ? AppColors.azulClaro : AppColors.verdeDivertido
+            )
           );
         } else {
           final data = snapshot.data as Map<String, dynamic>;
@@ -139,17 +139,17 @@ class AplicacionInicial extends StatelessWidget {
               '/splash': (context) => const PantallaSplash(),
               '/start': (context) => const PantallaInicio(),
               '/informacion': (context) => const PantallaInformacion(),
-              '/servicios': (context) => const ServicesPage(),
-              '/iniciar_sesion': (context) => const IniciarSesionPage(),
-              '/iniciar_contrasenia': (context) => const IniciarContraseniaPage(),
-              '/crear_cuenta': (context) => const CrearCuentaPage(),
-              '/crear_cuenta_2': (context) => const CrearCuenta2Page(),
-              '/cargar_imagen': (context) => const UploadImagePage(),
+              '/servicios': (context) => const PantallaServicios(),
+              '/iniciar_sesion': (context) => const PantallaIniciarSesion(),
+              '/iniciar_contrasenia': (context) => const PantallaSesionContrasenia(),
+              '/crear_cuenta': (context) => const PantallaCrearCuenta_1(),
+              '/crear_cuenta_2': (context) => const PantallaCrearCuenta_2(),
+              '/cargar_imagen': (context) => const PantallaCargarImagen(),
               '/bienvenida': (context) => const BienvenidaPage(),
-              '/home': (context) => const HomePage(),
+              '/home': (context) => const PantallaHome(),
 
-              '/web_sesion_registro': (context) => const WebSesionRegistroScreen(),
-              '/panel_administrativo': (context) => const PanelScreen(),
+              '/web_sesion_registro': (context) => const PantallaWebSesionRegistro(),
+              '/panel_administrativo': (context) => const PantallaWebPanel(),
             },
           );
         }

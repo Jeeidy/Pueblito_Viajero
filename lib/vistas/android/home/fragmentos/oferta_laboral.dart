@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-
 import '../../../../provider/fragmento_home_provider.dart';
+import '../../../../utils/custom/custom_colors.dart';
 
 class OfertaLaboralFragmento extends StatelessWidget {
   const OfertaLaboralFragmento({super.key});
@@ -12,7 +12,7 @@ class OfertaLaboralFragmento extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.blanco,
         body: Column(
           children: [
             Expanded(

@@ -98,7 +98,7 @@ class PanelMiradorProvider with ChangeNotifier {
     userId: '',
     name: '',
     description: '',
-    image: null,
+    image: '',
     images: [],
     address: '',
     phone: '',
@@ -179,7 +179,6 @@ class PanelMiradorProvider with ChangeNotifier {
       mirador.actualizarImagenes(imageFiles);
       notifyListeners();
     } else {
-      // Handle error: more than 5 images selected
     }
   }
 
@@ -188,7 +187,6 @@ class PanelMiradorProvider with ChangeNotifier {
       final List<XFile>? images = await _picker.pickMultiImage();
       return images;
     } catch (e) {
-      // Handle any errors that occur during image picking
       return null;
     }
   }
@@ -254,6 +252,7 @@ class PanelMiradorProvider with ChangeNotifier {
     } catch (e) {
       print('Error al registrar mirador: $e');
     } finally {
+      nombreDescripcionCheck = false;
       imagenCheck = false;
       imagenesCheck = false;
       contactoCheck = false;
@@ -301,6 +300,7 @@ class PanelMiradorProvider with ChangeNotifier {
     } catch (e) {
       print('Error updating mirador: $e');
     } finally {
+      nombreDescripcionCheck = false;
       imagenCheck = false;
       imagenesCheck = false;
       contactoCheck = false;

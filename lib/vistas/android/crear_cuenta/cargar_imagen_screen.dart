@@ -1,14 +1,12 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pueblito_viajero/vistas/widgets/boton_personalizable_icono.dart';
-
 import '../../../provider/screen_registro_provider.dart';
 import '../../../utils/custom/custom_colors.dart';
 
-class UploadImagePage extends StatelessWidget {
-  const UploadImagePage({super.key});
+class PantallaCargarImagen extends StatelessWidget {
+  const PantallaCargarImagen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +15,11 @@ class UploadImagePage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.blanco,
         body: Center(
           child: Card(
             elevation: 3,
-            color: Colors.grey[300],
+            color: AppColors.gris,
             margin: const EdgeInsets.all(20),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
@@ -34,7 +32,11 @@ class UploadImagePage extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       registroProvider.usuario.image == null
-                      ? const Icon(Icons.account_circle, color: AppColors.verdeDivertido, size: 250)
+                      ? const Icon(
+                        Icons.account_circle,
+                        color: AppColors.verdeDivertido,
+                        size: 250
+                      )
                       : Card(
                         elevation: 2,
                         shape: RoundedRectangleBorder(
@@ -82,8 +84,8 @@ class UploadImagePage extends StatelessWidget {
                       ),
                       const SizedBox(height: 50),
                       registroProvider.isLoading
-                        ? const Center(child: CircularProgressIndicator(color: AppColors.verdeDivertido))
-                        : BotonConIconoIzquierda(
+                      ? const Center(child: CircularProgressIndicator(color: AppColors.verdeDivertido))
+                      : BotonConIconoIzquierda(
                         text: 'SUBIR',
                         icon: Icons.file_upload_outlined,
                         onPressed: () {

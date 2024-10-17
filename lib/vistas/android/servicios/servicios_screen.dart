@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:pueblito_viajero/utils/custom/custom_colors.dart';
-
 import '../../../provider/screen_servicios_provider.dart';
 import '../../widgets/boton_personalizable.dart';
 import '../../widgets/boton_sesion_redes.dart';
 
-class ServicesPage extends StatelessWidget {
-  const ServicesPage({super.key});
+class PantallaServicios extends StatelessWidget {
+  const PantallaServicios({super.key});
 
   @override
   Widget build(BuildContext context) {
     final serviciosProvider = Provider.of<ServiciosProvider>(context);
-
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.blanco,
         body: Center(
           child: Card(
             elevation: 3,
-            color: Colors.grey[300],
+            color: AppColors.gris,
             margin: const EdgeInsets.all(20),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
@@ -88,10 +86,10 @@ class ServicesPage extends StatelessWidget {
                         type: 'google',
                       ),
                       BotonRedes(
-                          text: 'Iniciar sesión con Facebook',
-                          icon: Icons.facebook_outlined,
-                          onPressed: (){},
-                          type: 'facebook',
+                        text: 'Iniciar sesión con Facebook',
+                        icon: Icons.facebook_outlined,
+                        onPressed: (){},
+                        type: 'facebook',
                       ),
                     ],
                   ),

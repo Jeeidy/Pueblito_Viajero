@@ -7,7 +7,6 @@ import 'package:pueblito_viajero/utils/custom/custom_colors.dart';
 import 'package:pueblito_viajero/vistas/android/crear_cuenta/widgets/textfield_personalizable.dart';
 import 'package:pueblito_viajero/vistas/android/iniciar_sesion/widgets/textfield_contrasenia.dart';
 import 'package:pueblito_viajero/vistas/widgets/boton_personalizable.dart';
-
 import '../../../../provider/panel_perfil_provider.dart';
 import '../../../../provider/screen_registro_provider.dart';
 
@@ -23,7 +22,7 @@ class InicioSesionFragmento extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey[300],
+          color: AppColors.gris,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -70,9 +69,9 @@ class InicioSesionFragmento extends StatelessWidget {
   }
 }
 
+
 class FormularioInicioSesion extends StatelessWidget {
   const FormularioInicioSesion({super.key});
-
   @override
   Widget build(BuildContext context) {
     final sesionProvider = Provider.of<IniciarSesionProvider>(context);
@@ -129,21 +128,21 @@ class FormularioInicioSesion extends StatelessWidget {
             sesionProvider.isLoading
             ? const Center(child: CircularProgressIndicator(color: AppColors.azulClaro))
             : BotonComun(
-                color: AppColors.azulClaro,
-                text: 'INICIAR SESIÓN',
-                onPressed: () {
-                  if (registroProvider.isValidEmail(sesionProvider.emailController.text)) {
-                    if(registroProvider.isValidPassword(sesionProvider.passwordController.text)){
-                      sesionProvider.agregarValor(sesionProvider.emailController, 'email');
-                      sesionProvider.agregarValor(sesionProvider.passwordController, 'password');
-                      sesionProvider.login(context);
-                    } else {
-                      registroProvider.showErrorDialog(context, 'La contraseña debe tener al menos 8 caracteres.', 'caracter');
-                    }
+              color: AppColors.azulClaro,
+              text: 'INICIAR SESIÓN',
+              onPressed: () {
+                if (registroProvider.isValidEmail(sesionProvider.emailController.text)) {
+                  if(registroProvider.isValidPassword(sesionProvider.passwordController.text)){
+                    sesionProvider.agregarValor(sesionProvider.emailController, 'email');
+                    sesionProvider.agregarValor(sesionProvider.passwordController, 'password');
+                    sesionProvider.login(context);
                   } else {
-                    registroProvider.showErrorDialog(context, 'El correo electrónico no es válido.', 'email');
+                    registroProvider.showErrorDialog(context, 'La contraseña debe tener al menos 8 caracteres.', 'caracter');
                   }
+                } else {
+                  registroProvider.showErrorDialog(context, 'El correo electrónico no es válido.', 'email');
                 }
+              }
             ),
             const SizedBox(height: 15),
             Container(
@@ -182,7 +181,6 @@ class FormularioInicioSesion extends StatelessWidget {
     );
   }
 }
-
 
 
 class ContraseniaOlvidadaFragmento extends StatelessWidget {

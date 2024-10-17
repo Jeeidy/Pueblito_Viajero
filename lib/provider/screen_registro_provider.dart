@@ -111,7 +111,7 @@ class RegistroProvider with ChangeNotifier {
       } else {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const IniciarSesionPage()),
+          MaterialPageRoute(builder: (context) => const PantallaIniciarSesion()),
         );
       }
       usuario.image = null;

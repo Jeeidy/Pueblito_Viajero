@@ -1,13 +1,10 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pueblito_viajero/vistas/web/panel_screen/fragmentos/secciones/formulario_perfil.dart';
-import 'package:pueblito_viajero/vistas/web/panel_screen/fragmentos/secciones/seleccion_opciones_perfil.dart';
-
 import '../../../../provider/screen_iniciar_sesion_provider.dart';
 import '../../../../provider/panel_perfil_provider.dart';
 import '../../../../utils/custom/custom_colors.dart';
+import '../../../android/home/fragmentos/perfil.dart';
 
 class PanelPerfil extends StatelessWidget {
   const PanelPerfil({super.key});

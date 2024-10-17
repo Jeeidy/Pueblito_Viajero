@@ -9,15 +9,15 @@ import 'oferta_laboral.dart';
 
 class HomeFragmento extends StatefulWidget {
   const HomeFragmento({super.key});
-
   @override
   State<HomeFragmento> createState() => _HomeFragmentoState();
 }
 
 class _HomeFragmentoState extends State<HomeFragmento> {
-  final PageController _pageController = PageController();
   int _currentPage = 0;
   late Timer _timer;
+
+  final PageController _pageController = PageController();
 
   List fragmentos = [
     const HomeFragmento()
@@ -26,9 +26,7 @@ class _HomeFragmentoState extends State<HomeFragmento> {
   @override
   void initState() {
     super.initState();
-
-    // Espera un breve periodo de tiempo antes de iniciar el temporizador
-    Future.delayed(Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 100), () {
       _timer = Timer.periodic(const Duration(seconds: 6), (Timer timer) {
         if (mounted && _pageController.hasClients) {
           if (_currentPage < 2) {

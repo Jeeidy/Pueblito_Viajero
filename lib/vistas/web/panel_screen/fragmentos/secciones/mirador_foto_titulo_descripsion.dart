@@ -41,7 +41,7 @@ class TituloImagenSeccion extends StatelessWidget {
             child: Stack(
               children: [
                 Center(
-                  child: (image == null && imagenUrl.isEmpty && image_2 == '')
+                  child: (image == '' && imagenUrl.isEmpty && image_2 == '')
                   ? const Icon(Icons.account_balance_rounded, color: AppColors.azulClaro, size: 120)
                   : Container(
                     width: 120,

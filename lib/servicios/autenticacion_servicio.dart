@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../modelos/usuario_model.dart';
 
 
@@ -26,7 +25,6 @@ class AutenticacionService {
         );
       }
     } on FirebaseAuthException catch (e) {
-      // Re-throw the FirebaseAuthException to be caught in the provider
       throw e;
     } catch (e) {
       print('Error during login: $e');

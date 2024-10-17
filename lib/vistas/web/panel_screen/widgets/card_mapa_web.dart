@@ -31,7 +31,6 @@ class _CardGoogleMapsState extends State<CardGoogleMaps> {
     final miradorProvider = Provider.of<PanelMiradorProvider>(context);
     final sesionProvider = Provider.of<IniciarSesionProvider>(context);
 
-    // Registro de la vista iframe solo para web.
     ui.platformViewRegistry.registerViewFactory(
       'google-maps-iframe',
           (int viewId) => IFrameElement()
@@ -51,7 +50,7 @@ class _CardGoogleMapsState extends State<CardGoogleMaps> {
           padding: const EdgeInsets.only(right: 53, top: 10, bottom: 10, left: 10),
           child: Center(
             child: miradorProvider.mapaEdit
-                ? Column(
+            ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFieldNombreMirador(
@@ -62,11 +61,10 @@ class _CardGoogleMapsState extends State<CardGoogleMaps> {
                 ),
               ],
             )
-                : miradorProvider.mirador.mapa == '' &&
-                sesionProvider.mirador.mapa == ''
-                ? const Icon(Icons.location_on_outlined,
-                size: 50, color: AppColors.azulClaro)
-                : ClipRRect(
+            : miradorProvider.mirador.mapa == '' && sesionProvider.mirador.mapa == ''
+            ? const Icon(Icons.location_on_outlined,
+              size: 50, color: AppColors.azulClaro)
+            : ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: const HtmlElementView(viewType: 'google-maps-iframe'),
             ),

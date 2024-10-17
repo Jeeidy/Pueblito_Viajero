@@ -10,7 +10,6 @@ class StorageService {
       Reference ref = _storage.ref().child(carpeta).child('$userId.jpg');
       UploadTask uploadTask;
       SettableMetadata metadata;
-
       if (image is File) {
         metadata = SettableMetadata(contentType: 'image/jpeg');
         uploadTask = ref.putFile(image, metadata);
@@ -23,6 +22,7 @@ class StorageService {
       TaskSnapshot snapshot = await uploadTask;
       String downloadUrl = await snapshot.ref.getDownloadURL();
       return downloadUrl;
+
     } catch (e) {
       print('Error al subir imagen: $e');
       return null;
@@ -38,7 +38,6 @@ class StorageService {
         Reference ref = _storage.ref().child(carpeta).child('${docId}_${i + 1}.jpg');
         UploadTask uploadTask;
         SettableMetadata metadata;
-
         if (image is File) {
           metadata = SettableMetadata(contentType: 'image/jpeg');
           uploadTask = ref.putFile(image, metadata);
@@ -51,6 +50,7 @@ class StorageService {
         TaskSnapshot snapshot = await uploadTask;
         String downloadUrl = await snapshot.ref.getDownloadURL();
         downloadUrls.add(downloadUrl);
+
       } catch (e) {
         print('Error al subir imagen: $e');
         downloadUrls.add(null);
