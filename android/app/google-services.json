@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "315768036614",
+    "project_id": "pueblito-viajero",
+    "storage_bucket": "pueblito-viajero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315768036614:android:ed2da7ebff13031e809287",
+        "android_client_info": {
+          "package_name": "com.example.pueblito_viajero"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3aOE7ikKVAvGln5i3rFz-79F9xZymTtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
