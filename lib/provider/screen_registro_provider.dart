@@ -22,6 +22,7 @@ class RegistroProvider with ChangeNotifier {
 
   bool isLoading = false;
   bool capturaInfo = false;
+  bool isPasswordVisible = false;
 
   final RegistroService _registroService = RegistroService();
   final ImagePickerService _imagePickerService = ImagePickerService();
@@ -77,6 +78,11 @@ class RegistroProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
+    notifyListeners();
+  }
+
   Future<void> pickImageFromCamera() async {
     final cameraStatus = await Permission.camera.request();
 
@@ -101,7 +107,7 @@ class RegistroProvider with ChangeNotifier {
     isLoading = true;
     notifyListeners();
 
-    User? user = await _registroService.registrarUsuario(usuario);
+    User? user = await _registroService.registrarUsuario(usuario, 1);
     isLoading = false;
     notifyListeners();
     if (user != null) {

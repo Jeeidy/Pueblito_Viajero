@@ -127,22 +127,34 @@ class FormularioInicioSesion extends StatelessWidget {
             const SizedBox(height: 10),
             sesionProvider.isLoading
             ? const Center(child: CircularProgressIndicator(color: AppColors.azulClaro))
-            : BotonComun(
-              color: AppColors.azulClaro,
-              text: 'INICIAR SESIÓN',
-              onPressed: () {
-                if (registroProvider.isValidEmail(sesionProvider.emailController.text)) {
-                  if(registroProvider.isValidPassword(sesionProvider.passwordController.text)){
-                    sesionProvider.agregarValor(sesionProvider.emailController, 'email');
-                    sesionProvider.agregarValor(sesionProvider.passwordController, 'password');
-                    sesionProvider.login(context);
-                  } else {
-                    registroProvider.showErrorDialog(context, 'La contraseña debe tener al menos 8 caracteres.', 'caracter');
+            : Column(
+              children: [
+                BotonComun(
+                  color: AppColors.azulClaro,
+                  text: 'INICIAR SESIÓN',
+                  onPressed: () {
+                    if (registroProvider.isValidEmail(sesionProvider.emailController.text)) {
+                      if(registroProvider.isValidPassword(sesionProvider.passwordController.text)){
+                        sesionProvider.agregarValor(sesionProvider.emailController, 'email');
+                        sesionProvider.agregarValor(sesionProvider.passwordController, 'password');
+                        sesionProvider.login(context);
+                      } else {
+                        registroProvider.showErrorDialog(context, 'La contraseña debe tener al menos 8 caracteres.', 'caracter');
+                      }
+                    } else {
+                      registroProvider.showErrorDialog(context, 'El correo electrónico no es válido.', 'email');
+                    }
                   }
-                } else {
-                  registroProvider.showErrorDialog(context, 'El correo electrónico no es válido.', 'email');
-                }
-              }
+                ),
+                BotonComunIcono(
+                  color: Colors.grey[500]!,
+                  text: 'INICIAR CON GOOGLE',
+                  onPressed: (){
+                    sesionProvider.loginWithGoogle(context);
+                  },
+                  icono: const Icon(Icons.g_translate_outlined, color: AppColors.azulClaro, size: 25),
+                )
+              ],
             ),
             const SizedBox(height: 15),
             Container(

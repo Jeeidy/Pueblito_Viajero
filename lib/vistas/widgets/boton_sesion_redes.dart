@@ -30,25 +30,28 @@ class BotonRedes extends StatelessWidget {
           backgroundColor: Colors.blueGrey, // Fixed color
         ),
         onPressed: onPressed,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              text,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 25),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                text,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Icon(
-                icon,
-                color: AppColors.verdeDivertido,
-                size: 30,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Icon(
+                  icon,
+                  color: AppColors.verdeDivertido,
+                  size: 30,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

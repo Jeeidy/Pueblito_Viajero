@@ -9,6 +9,7 @@ import 'package:pueblito_viajero/vistas/web/sesion_registro/sesion_registro_scre
 import 'package:shared_preferences/shared_preferences.dart';
 import '../modelos/usuario_model.dart';
 import '../servicios/autenticacion_servicio.dart';
+import '../servicios/usuario_servicio.dart';
 import '../vistas/android/bienvenida/bienvenida_screen.dart';
 import '../vistas/android/start/start_screen.dart';
 import 'fragmento_home_provider.dart';
@@ -26,6 +27,7 @@ class IniciarSesionProvider with ChangeNotifier {
   bool tieneMirador = false;
   bool isPasswordVisible = true;
 
+  final RegistroService _registroService = RegistroService();
   final AutenticacionService _autenticacionService = AutenticacionService();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
@@ -116,6 +118,38 @@ class IniciarSesionProvider with ChangeNotifier {
       isLoading = false;
       notifyListeners();
       showErrorDialog(context, 'Error desconocido. Inténtalo de nuevo.', 'error');
+    }
+  }
+
+  Future<void> loginWithGoogle(BuildContext context) async {
+    isLoading = true;
+    notifyListeners();
+
+    try {
+      UsuarioModel? user = await _autenticacionService.loginWithGoogle();
+      usuario = user!;
+
+      if (user != null) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setBool('isLoggedIn', true);
+        await prefs.setString('userId', user.id);
+        await _registroService.registrarUsuario(usuario, 2);
+
+        isLoading = false;
+        notifyListeners();
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => const BienvenidaPage()),
+              (Route<dynamic> route) => false,
+        );
+      } else {
+        isLoading = false;
+        notifyListeners();
+        showErrorDialog(context, 'Inicio de sesión cancelado o fallido.', 'error');
+      }
+    } catch (e) {
+      isLoading = false;
+      notifyListeners();
+      showErrorDialog(context, 'Error durante el inicio de sesión con Google.', 'error');
     }
   }
 

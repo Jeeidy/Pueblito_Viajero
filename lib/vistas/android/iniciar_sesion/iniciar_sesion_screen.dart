@@ -102,16 +102,12 @@ class PantallaIniciarSesion extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           BotonRedes(
-                            text: 'Iniciar sesión con Google',
+                            text: 'Inicia sesión con Google',
                             icon: Icons.g_translate_outlined,
-                            onPressed: (){},
+                            onPressed: () {
+                              sesionProvider.loginWithGoogle(context);
+                            },
                             type: 'google',
-                          ),
-                          BotonRedes(
-                            text: 'Iniciar sesión con Facebook',
-                            icon: Icons.facebook_outlined,
-                            onPressed: (){},
-                            type: 'facebook',
                           ),
                         ],
                       ),

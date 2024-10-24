@@ -37,13 +37,13 @@ class CrearCuentaFragmento extends StatelessWidget {
         child: Center(
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
-            padding: const EdgeInsets.fromLTRB(50, 20, 50, 25),
+            padding: const EdgeInsets.fromLTRB(50, 30, 50, 25),
             child: Column(
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: Text(
-                    'CREA UNA CUENTA ADMINISTRATIVA',
+                    'CREA UNA CUENTA',
                     textAlign: TextAlign.center,
                     maxLines: 5,
                     style: GoogleFonts.inter(
@@ -61,21 +61,35 @@ class CrearCuentaFragmento extends StatelessWidget {
                 const SizedBox(height: 20),
                 registroProvider.isLoading
                 ? const Center(child: CircularProgressIndicator(color: AppColors.azulClaro))
-                : BotonComun(
-                  color: AppColors.azulClaro,
-                  text: registroProvider.capturaInfo ? 'CREAR CUENTA' : 'SIGUIENTE',
-                  onPressed: registroProvider.capturaInfo
-                  ? () {
-                    registroProvider.registrarUsuario(context);
-                    sesionProvider.togglePasswordVisibility();
-                    registroProvider.siguienteWebFalse();
-                  }
-                  : () {
-                    registroProvider.agregarValor(registroProvider.nameController, 'name');
-                    registroProvider.agregarValor(registroProvider.emailController, 'email');
-                    registroProvider.agregarValor(registroProvider.passwordController, 'password');
-                    registroProvider.siguienteWeb();
-                  },
+                : Column(
+                  children: [
+                    BotonComun(
+                      color: AppColors.azulClaro,
+                      text: registroProvider.capturaInfo ? 'CREAR CUENTA' : 'SIGUIENTE',
+                      onPressed: registroProvider.capturaInfo
+                      ? () {
+                        registroProvider.registrarUsuario(context);
+                        sesionProvider.togglePasswordVisibility();
+                        registroProvider.siguienteWebFalse();
+                      }
+                      : () {
+                        registroProvider.agregarValor(registroProvider.nameController, 'name');
+                        registroProvider.agregarValor(registroProvider.emailController, 'email');
+                        registroProvider.agregarValor(registroProvider.passwordController, 'password');
+                        registroProvider.siguienteWeb();
+                      },
+                    ),
+                    registroProvider.capturaInfo
+                    ? const SizedBox(height: 0)
+                    : BotonComunIcono(
+                      color: Colors.grey[500]!,
+                      text: 'INICIAR CON GOOGLE',
+                      onPressed: (){
+                        sesionProvider.loginWithGoogle(context);
+                      },
+                      icono: const Icon(Icons.g_translate_outlined, color: AppColors.azulClaro, size: 25),
+                    )
+                  ],
                 ),
                 const SizedBox(height: 15),
                 Container(

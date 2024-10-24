@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:pueblito_viajero/provider/screen_registro_provider.dart';
 import 'package:pueblito_viajero/vistas/android/crear_cuenta/widgets/textfield_personalizable.dart';
 import 'package:pueblito_viajero/vistas/widgets/boton_personalizable.dart';
+import '../../../provider/screen_iniciar_sesion_provider.dart';
 import '../../../utils/custom/custom_colors.dart';
 import '../../widgets/boton_sesion_redes.dart';
 
@@ -11,6 +12,7 @@ class PantallaCrearCuenta_1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sesionProvider = Provider.of<IniciarSesionProvider>(context);
     final registroProvider = Provider.of<RegistroProvider>(context);
 
     void unfocusTextField() {
@@ -83,16 +85,12 @@ class PantallaCrearCuenta_1 extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           BotonRedes(
-                            text: 'Iniciar sesión con Google',
+                            text: 'Inicia con Google',
                             icon: Icons.g_translate_outlined,
-                            onPressed: (){},
+                            onPressed: () {
+                              sesionProvider.loginWithGoogle(context);
+                            },
                             type: 'google',
-                          ),
-                          BotonRedes(
-                            text: 'Iniciar sesión con Facebook',
-                            icon: Icons.facebook_outlined,
-                            onPressed: (){},
-                            type: 'facebook',
                           ),
                         ],
                       ),

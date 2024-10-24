@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pueblito_viajero/vistas/android/crear_cuenta/widgets/textfield_personalizable.dart';
+import '../../../provider/screen_iniciar_sesion_provider.dart';
 import '../../../provider/screen_registro_provider.dart';
 import '../../../utils/custom/custom_colors.dart';
 import '../../widgets/boton_personalizable.dart';
+import '../iniciar_sesion/widgets/textfield_contrasenia.dart';
 
 class PantallaCrearCuenta_2 extends StatelessWidget {
   const PantallaCrearCuenta_2({super.key});
@@ -11,6 +13,7 @@ class PantallaCrearCuenta_2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final registroProvider = Provider.of<RegistroProvider>(context);
+    final sesionProvider = Provider.of<IniciarSesionProvider>(context);
 
     void unfocusTextField() {
       registroProvider.passwordFocusNode.unfocus();
@@ -62,14 +65,12 @@ class PantallaCrearCuenta_2 extends StatelessWidget {
                             type: '1',
                           ),
                           const SizedBox(height: 15),
-                          TextFieldPersonalizable(
-                            labelText: 'Contraseña:',
-                            hintText: 'Contraseña',
-                            icon: Icons.key_outlined,
+                          CustomPasswordField(
                             controller: registroProvider.passwordController,
-                            keyboard: 'email',
                             focusNode: registroProvider.passwordFocusNode,
-                            type: '1',
+                            onToggleVisibility: () {
+                              sesionProvider.togglePasswordVisibility();
+                            },
                           ),
                         ],
                       ),
@@ -89,6 +90,7 @@ class PantallaCrearCuenta_2 extends StatelessWidget {
                           } else {
                             registroProvider.agregarValor(registroProvider.nameController, 'name');
                             registroProvider.agregarValor(registroProvider.passwordController, 'password');
+                            registroProvider.isPasswordVisible = false;
                             registroProvider.siguiente2(context);
                           }
                         }
